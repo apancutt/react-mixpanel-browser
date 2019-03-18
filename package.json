@@ -1,0 +1,37 @@
+{
+  "name": "react-mixpanel-browser",
+  "version": "1.0.0",
+  "description": "React providers for mixpanel-browser using the Context API.",
+  "keywords": [
+    "react",
+    "mixpanel"
+  ],
+  "homepage": "https://github.com/apancutt/react-mixpanel-browser#readme",
+  "bugs": {
+    "url": "https://github.com/apancutt/react-mixpanel-browser/issues"
+  },
+  "author": "Adam Pancutt <adam@pancutt.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apancutt/react-mixpanel-browser.git"
+  },
+  "main": "dist/cjs.js",
+  "module": "dist/es.js",
+  "dependencies": {
+    "mixpanel-browser": "^2.27.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0-beta.54",
+    "react": "^16.7.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^4.0.1"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -w -c"
+  }
+}
