@@ -1,12 +1,12 @@
 import React from 'react';
-import Mixpanel from './context'
+import MixpanelContext from './context'
 
 const withMixpanel = (Component) => (props) => (
-  <Mixpanel.Consumer>
+  <MixpanelContext.Consumer>
     {(mixpanel) => (
       <Component mixpanel={mixpanel} {...props} />
     )}
-  </Mixpanel.Consumer>
+  </MixpanelContext.Consumer>
 );
 
 export default withMixpanel;

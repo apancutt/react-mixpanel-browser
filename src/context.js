@@ -1,9 +1,4 @@
 import { createContext } from 'react';
-import mixpanel from 'mixpanel-browser';
+import mixpanel from './mixpanel';
 
-const enabled = !!process.env.REACT_APP_MIXPANEL_TOKEN;
-if (enabled) {
-  mixpanel.init(process.env.REACT_APP_MIXPANEL_TOKEN);
-}
-
-export default createContext(enabled ? mixpanel : null);
+export default createContext(mixpanel);

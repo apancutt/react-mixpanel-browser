@@ -12,11 +12,22 @@ React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-br
 
 ## Usage
 
-1. Create a project in Mixpanel then add the token to `.env`:
+1. Create a project in Mixpanel then add the token to `./.env`:
 
         REACT_APP_MIXPANEL_TOKEN=<token>
 
-2. Consume the context either using the `useContext()` hook (stateless components only) or the `withMixpanel()` High-Order Component. The value provided will be either a pre-initialized instance of [MixpanelLib](https://developer.mixpanel.com/docs/javascript-full-api-reference) or `null` if a token was not provided; useful for non-tracked environments.
+2. Intialize Mixpanel with any custom configuration in `./src/index.jsx`:
+
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import { init as initMixpanel } from 'react-mixpanel-browser';
+        import App from './App';
+
+        initMixpanel({/* custom configuration */});
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+3. Consume the context either using the `useContext()` hook (stateless components only) or the `withMixpanel()` High-Order Component. The value provided will be either an instance of [MixpanelLib](https://developer.mixpanel.com/docs/javascript-full-api-reference) or `null` if a token was not provided; useful for untracked environments.
 
 ## Examples
 

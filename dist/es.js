@@ -6632,13 +6632,17 @@ var mixpanel = init_as_module();
 
 var mixpanel_cjs = mixpanel;
 
-const enabled = !!process.env.REACT_APP_MIXPANEL_TOKEN;
+var mixpanel$1 = process.env.REACT_APP_MIXPANEL_TOKEN ? mixpanel_cjs : null;
 
-if (enabled) {
-  mixpanel_cjs.init(process.env.REACT_APP_MIXPANEL_TOKEN);
-}
+var MixpanelContext = createContext(mixpanel$1);
 
-var Mixpanel = createContext(enabled ? mixpanel_cjs : null);
+const defaults = {
+  // Mixpanel cookies get big; avoid bloating request headers by using local storage instead
+  persistence: 'localStorage',
+  // Rarely makes sense to track page views in React apps
+  track_pageview: false
+};
+var init = ((config = {}, name = undefined) => mixpanel$1 && mixpanel$1.init(process.env.REACT_APP_MIXPANEL_TOKEN, Object.assign({}, defaults, config), name));
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -6658,8 +6662,8 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-const withMixpanel = Component => props => React.createElement(Mixpanel.Consumer, null, mixpanel => React.createElement(Component, _extends({
+const withMixpanel = Component => props => React.createElement(MixpanelContext.Consumer, null, mixpanel => React.createElement(Component, _extends({
   mixpanel: mixpanel
 }, props)));
 
-export { Mixpanel as context, withMixpanel };
+export { MixpanelContext as context, init, mixpanel$1 as mixpanel, withMixpanel };
