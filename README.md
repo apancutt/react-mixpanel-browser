@@ -27,11 +27,30 @@ React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-br
 
         ReactDOM.render(<App />, document.getElementById('root'));
 
-3. Consume the context either using the `useContext()` hook (stateless components only) or the `withMixpanel()` High-Order Component. The value provided will be either an instance of [MixpanelLib](https://developer.mixpanel.com/docs/javascript-full-api-reference) or `null` if a token was not provided; useful for untracked environments.
+3. Import `mixpanel` directly or via context using either the `useContext()` hook (stateless components only) or the `withMixpanel()` High-Order Component. The value provided will be either an instance of [MixpanelLib](https://developer.mixpanel.com/docs/javascript-full-api-reference) or `null` if a token was not provided; useful for untracked environments.
 
 ## Examples
 
-### `useContext()` Hook ###
+### Usage with `import` ###
+
+    import React, { useContext } from 'react';
+    import { mixpanel } from 'react-mixpanel-browser';
+
+    const App = (props) = {
+
+      // Note that mixpanel will be null if a token has not been configured
+
+      mixpanel && mixpanel.track('My Event', {
+        my_custom_prop: 'foo',
+      });
+
+      return <div>This page was tracked in Mixpanel</div>;
+
+    };
+
+    export default App;
+
+### Usage with `useContext()` Hook ###
 
     import React, { useContext } from 'react';
     import { context as mixpanelContext } from 'react-mixpanel-browser';
@@ -52,7 +71,7 @@ React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-br
 
     export default App;
 
-### `withMixpanel()` High-Order Component
+### Usage with `withMixpanel()` High-Order Component
 
     import React from 'react';
     import { withMixpanel } from 'react-mixpanel-browser';
