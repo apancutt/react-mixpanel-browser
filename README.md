@@ -4,7 +4,7 @@ React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-br
 
 ## Installation
 
-1. Install the package from NPM or Yarn:
+1. Install the package using NPM or Yarn:
 
         npm install --save react-mixpanel-browser
         # or
