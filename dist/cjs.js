@@ -6641,8 +6641,6 @@ var mixpanel_cjs = mixpanel;
 
 var mixpanel$1 = process.env.REACT_APP_MIXPANEL_TOKEN ? mixpanel_cjs : null;
 
-var MixpanelContext = React.createContext(mixpanel$1);
-
 const defaults = {
   // Mixpanel cookies get big; avoid bloating request headers by using local storage instead
   persistence: 'localStorage',
@@ -6650,6 +6648,10 @@ const defaults = {
   track_pageview: false
 };
 var init = ((config = {}, name = undefined) => mixpanel$1 && mixpanel$1.init(process.env.REACT_APP_MIXPANEL_TOKEN, Object.assign({}, defaults, config), name));
+
+var MixpanelContext = React.createContext(mixpanel$1);
+
+const useMixpanel = () => React.useContext(MixpanelContext);
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -6673,7 +6675,7 @@ const withMixpanel = Component => props => React__default.createElement(Mixpanel
   mixpanel: mixpanel
 }, props)));
 
-exports.context = MixpanelContext;
 exports.init = init;
 exports.mixpanel = mixpanel$1;
+exports.useMixpanel = useMixpanel;
 exports.withMixpanel = withMixpanel;
