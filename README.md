@@ -1,6 +1,6 @@
 # react-mixpanel-browser
 
-React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-browser) using the [Context API](https://reactjs.org/docs/context.html).
+Thin wrapper for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-browser) for use in React apps.
 
 ## Installation
 
@@ -27,52 +27,21 @@ React providers for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-br
 
         ReactDOM.render(<App />, document.getElementById('root'));
 
-3. Access the context using either the `useMixpanel()` hook (stateless components only) or the `withMixpanel()` High-Order Component. The value provided will be either an instance of [MixpanelLib](https://developer.mixpanel.com/docs/javascript-full-api-reference) or `null` if a token was not provided; useful for untracked environments.
+3. Import the instance into your components where required:
 
-## Examples
+        import React from 'react';
+        import mixpanel from 'react-mixpanel-browser';
 
-### Usage with `useMixpanel()` Hook ###
+        const App = (props) = {
 
-    import React from 'react';
-    import { useMixpanel } from 'react-mixpanel-browser';
+          // Note that mixpanel will be null if a token has not been configured
 
-    const App = (props) = {
+          mixpanel && mixpanel.track('My Event', {
+            my_custom_prop: 'foo',
+          });
 
-      const mixpanel = useMixpanel();
+          return <div>This page was tracked in Mixpanel</div>;
 
-      // Note that mixpanel will be null if a token has not been configured
+        };
 
-      mixpanel && mixpanel.track('My Event', {
-        my_custom_prop: 'foo',
-      });
-
-      return <div>This page was tracked in Mixpanel</div>;
-
-    };
-
-    export default App;
-
-### Usage with `withMixpanel()` High-Order Component
-
-    import React from 'react';
-    import { withMixpanel } from 'react-mixpanel-browser';
-
-    class App extends Component {
-
-      render() {
-
-        const { mixpanel } = this.props;
-
-        // Note that mixpanel will be null if a token has not been configured
-
-        mixpanel && mixpanel.track('My Event', {
-          my_custom_prop: 'foo',
-        });
-
-        return <div>This page was tracked in Mixpanel</div>;
-
-      }
-
-    }
-
-    export default withMixpanel(App);
+        export default App;
