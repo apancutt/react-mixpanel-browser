@@ -6659,8 +6659,6 @@ const withMixpanel = Component => props => React.createElement(Consumer, null, m
 }, props)));
 
 const defaults = {
-  persistence: 'localStorage',
-  // Avoid bloating HTTP requests by using local storage instead
   track_pageview: false // Rarely makes sense to track page views in React apps
 
 };
