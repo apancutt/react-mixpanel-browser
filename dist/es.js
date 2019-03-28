@@ -18,6 +18,14 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+const context = createContext(null);
+const Consumer = context.Consumer;
+const Provider = context.Provider;
+const useMixpanel = () => useContext(context);
+const withMixpanel = Component => props => React.createElement(Consumer, null, mixpanel => React.createElement(Component, _extends({
+  mixpanel: mixpanel
+}, props)));
+
 var Config = {
     DEBUG: false,
     LIB_VERSION: '2.27.1'
@@ -6649,14 +6657,6 @@ function init_as_module() {
 var mixpanel = init_as_module();
 
 var mixpanel_cjs = mixpanel;
-
-const context = createContext(mixpanel_cjs);
-const Consumer = context.Consumer;
-const Provider = context.Provider;
-const useMixpanel = () => useContext(context);
-const withMixpanel = Component => props => React.createElement(Consumer, null, mixpanel => React.createElement(Component, _extends({
-  mixpanel: mixpanel
-}, props)));
 
 const defaults = {
   track_pageview: false // Rarely makes sense to track page views in React apps

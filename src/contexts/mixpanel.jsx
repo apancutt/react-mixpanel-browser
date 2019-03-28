@@ -1,7 +1,6 @@
-import mixpanel from 'mixpanel-browser';
 import React, { createContext, useContext } from 'react';
 
-const context = createContext(mixpanel);
+const context = createContext(null);
 export default context;
 
 export const Consumer = context.Consumer;
