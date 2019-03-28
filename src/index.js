@@ -1,2 +1,2 @@
-export { default as init } from './init';
-export { default as mixpanel } from './mixpanel';
+export { useMixpanel, withMixpanel } from './contexts/mixpanel';
+export { default as MixpanelProvider } from './MixpanelProvider';
