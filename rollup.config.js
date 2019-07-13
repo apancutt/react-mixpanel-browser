@@ -15,7 +15,11 @@ export default {
       file: pkg.module,
     }
   ],
-  external: [].concat(Object.keys(pkg.devDependencies || {}), Object.keys(pkg.peerDependencies || {})),
+  external: [].concat(
+    Object.keys(pkg.dependencies || {}),
+    Object.keys(pkg.devDependencies || {}),
+    Object.keys(pkg.peerDependencies || {}),
+  ),
   plugins: [
     resolve({
       extensions: ['.js', '.jsx'],
