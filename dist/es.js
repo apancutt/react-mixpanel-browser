@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { useContext, createContext } from 'react';
 import mixpanel from 'mixpanel-browser';
 
 function _extends() {
@@ -19,11 +19,11 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-const context = createContext(null);
+const context = /*#__PURE__*/createContext(null);
 const Consumer = context.Consumer;
 const Provider = context.Provider;
 const useMixpanel = () => useContext(context);
-const withMixpanel = Component => props => React.createElement(Consumer, null, mixpanel => React.createElement(Component, _extends({
+const withMixpanel = Component => props => /*#__PURE__*/React.createElement(Consumer, null, mixpanel => /*#__PURE__*/React.createElement(Component, _extends({
   mixpanel: mixpanel
 }, props)));
 
@@ -40,7 +40,7 @@ const MixpanelProvider = ({
 }) => {
   config = Object.assign({}, defaults, config);
   mixpanel.init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
-  return React.createElement(Provider, {
+  return /*#__PURE__*/React.createElement(Provider, {
     value: mixpanel
   }, children);
 };

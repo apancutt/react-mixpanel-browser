@@ -26,11 +26,11 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-const context = React.createContext(null);
+const context = /*#__PURE__*/React.createContext(null);
 const Consumer = context.Consumer;
 const Provider = context.Provider;
 const useMixpanel = () => React.useContext(context);
-const withMixpanel = Component => props => React__default.createElement(Consumer, null, mixpanel => React__default.createElement(Component, _extends({
+const withMixpanel = Component => props => /*#__PURE__*/React__default.createElement(Consumer, null, mixpanel => /*#__PURE__*/React__default.createElement(Component, _extends({
   mixpanel: mixpanel
 }, props)));
 
@@ -47,7 +47,7 @@ const MixpanelProvider = ({
 }) => {
   config = Object.assign({}, defaults, config);
   mixpanel.init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
-  return React__default.createElement(Provider, {
+  return /*#__PURE__*/React__default.createElement(Provider, {
     value: mixpanel
   }, children);
 };
