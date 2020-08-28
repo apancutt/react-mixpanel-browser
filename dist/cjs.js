@@ -2,35 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
+var _extends = require('@babel/runtime/helpers/extends');
 var React = require('react');
-var React__default = _interopDefault(React);
-var mixpanel = _interopDefault(require('mixpanel-browser'));
+var mixpanel = require('mixpanel-browser');
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
+var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var mixpanel__default = /*#__PURE__*/_interopDefaultLegacy(mixpanel);
 
 const context = /*#__PURE__*/React.createContext(null);
 const Consumer = context.Consumer;
 const Provider = context.Provider;
 const useMixpanel = () => React.useContext(context);
-const withMixpanel = Component => props => /*#__PURE__*/React__default.createElement(Consumer, null, mixpanel => /*#__PURE__*/React__default.createElement(Component, _extends({
+const withMixpanel = Component => props => /*#__PURE__*/React__default['default'].createElement(Consumer, null, mixpanel => /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({
   mixpanel: mixpanel
 }, props)));
 
@@ -46,9 +32,9 @@ const MixpanelProvider = ({
   token
 }) => {
   config = Object.assign({}, defaults, config);
-  mixpanel.init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
-  return /*#__PURE__*/React__default.createElement(Provider, {
-    value: mixpanel
+  mixpanel__default['default'].init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
+  return /*#__PURE__*/React__default['default'].createElement(Provider, {
+    value: mixpanel__default['default']
   }, children);
 };
 
