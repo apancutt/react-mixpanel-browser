@@ -19,22 +19,18 @@ export default {
     Object.keys(pkg.dependencies || {}),
     Object.keys(pkg.devDependencies || {}),
     Object.keys(pkg.peerDependencies || {}),
-    /@babel\/runtime/,
+    /@babel\/runtime/
   ),
   plugins: [
     resolve({
-      extensions: ['.js', '.jsx'],
+      extensions: [ '.js', '.jsx' ],
     }),
     babel({
       babelrc: false,
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
-      plugins: [
-        '@babel/plugin-transform-runtime',
-      ],
-      presets: [
-        '@babel/preset-react',
-      ],
+      plugins: [ '@babel/plugin-transform-runtime' ],
+      presets: [ '@babel/preset-react' ],
     }),
     commonjs(),
   ],
