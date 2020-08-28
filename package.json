@@ -30,10 +30,15 @@
     "@rollup/plugin-commonjs": "15",
     "@rollup/plugin-node-resolve": "9",
     "react": "16",
+    "react-scripts": "3",
     "rollup": "2"
   },
   "scripts": {
+    "eslint": "eslint src/**/*.js",
     "build": "rollup -c",
     "build:watch": "rollup -w -c"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
