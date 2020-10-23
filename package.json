@@ -29,7 +29,7 @@
     "@rollup/plugin-babel": "5",
     "@rollup/plugin-commonjs": "15",
     "@rollup/plugin-node-resolve": "9",
-    "react": "16",
+    "react": "17",
     "react-scripts": "3",
     "rollup": "2"
   },
