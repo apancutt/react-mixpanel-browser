@@ -1,5 +1,5 @@
 import _extends from '@babel/runtime/helpers/extends';
-import React, { useContext, createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import mixpanel from 'mixpanel-browser';
 
 const context = /*#__PURE__*/createContext(null);
