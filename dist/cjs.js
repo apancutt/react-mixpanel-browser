@@ -16,7 +16,7 @@ const context = /*#__PURE__*/React.createContext(null);
 const Consumer = context.Consumer;
 const Provider = context.Provider;
 const useMixpanel = () => React.useContext(context);
-const withMixpanel = Component => props => /*#__PURE__*/React__default['default'].createElement(Consumer, null, mixpanel => /*#__PURE__*/React__default['default'].createElement(Component, _extends__default['default']({
+const withMixpanel = Component => props => /*#__PURE__*/React__default["default"].createElement(Consumer, null, mixpanel => /*#__PURE__*/React__default["default"].createElement(Component, _extends__default["default"]({
   mixpanel: mixpanel
 }, props)));
 
@@ -32,9 +32,9 @@ const MixpanelProvider = ({
   token
 }) => {
   config = Object.assign({}, defaults, config);
-  mixpanel__default['default'].init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
-  return /*#__PURE__*/React__default['default'].createElement(Provider, {
-    value: mixpanel__default['default']
+  mixpanel__default["default"].init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
+  return /*#__PURE__*/React__default["default"].createElement(Provider, {
+    value: mixpanel__default["default"]
   }, children);
 };
 
