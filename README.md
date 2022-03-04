@@ -12,10 +12,6 @@ Install the package using NPM or Yarn:
         # or
         # yarn add react-mixpanel-browser
 
-Add your Mixpanel token to `./.env`:
-
-        REACT_APP_MIXPANEL_TOKEN=<token>
-
 ## Usage
 
 ### `MixpanelProvider` Component
@@ -24,7 +20,7 @@ Add your Mixpanel token to `./.env`:
     import { MixpanelProvider } from 'react-mixpanel-browser';
 
     const App = (props) => (
-      <MixpanelProvider>
+      <MixpanelProvider token="<token>">
         ...
       </MixpanelProvider>
     );

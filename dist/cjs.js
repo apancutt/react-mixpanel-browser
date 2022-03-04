@@ -32,7 +32,7 @@ const MixpanelProvider = ({
   token
 }) => {
   config = Object.assign({}, defaults, config);
-  mixpanel__default["default"].init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
+  mixpanel__default["default"].init(token, config, name);
   return /*#__PURE__*/React__default["default"].createElement(Provider, {
     value: mixpanel__default["default"]
   }, children);

@@ -7,17 +7,11 @@ const defaults = {
 };
 
 const MixpanelProvider = ({ children, config, name, token }) => {
-
   config = Object.assign({}, defaults, config);
 
-  mixpanel.init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
+  mixpanel.init(token, config, name);
 
-  return (
-    <Provider value={mixpanel}>
-      {children}
-    </Provider>
-  );
-
+  return <Provider value={mixpanel}>{children}</Provider>;
 };
 
 export default MixpanelProvider;

@@ -22,7 +22,7 @@ const MixpanelProvider = ({
   token
 }) => {
   config = Object.assign({}, defaults, config);
-  mixpanel.init(token || process.env.REACT_APP_MIXPANEL_TOKEN, config, name);
+  mixpanel.init(token, config, name);
   return /*#__PURE__*/React.createElement(Provider, {
     value: mixpanel
   }, children);

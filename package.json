@@ -1,6 +1,6 @@
 {
   "name": "react-mixpanel-browser",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "description": "React providers for mixpanel-browser using the Context API.",
   "keywords": [
     "react",
