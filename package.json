@@ -1,44 +1,84 @@
 {
-  "name": "react-mixpanel-browser",
-  "version": "3.3.0",
-  "description": "React providers for mixpanel-browser using the Context API.",
+  "browserslist": {
+    "node": [
+      "node 18"
+    ],
+    "production": [
+      "defaults"
+    ]
+  },
+  "dependencies": {
+    "mixpanel-browser": "2"
+  },
+  "description": "React hook for [mixpanel-browser](https://www.npmjs.com/package/mixpanel-browser).",
+  "devDependencies": {
+    "@types/mixpanel-browser": "2",
+    "@types/node": "18",
+    "@types/react": "18",
+    "@typescript-eslint/eslint-plugin": "6",
+    "@typescript-eslint/parser": "6",
+    "browserslist": "4",
+    "esbuild": "0",
+    "esbuild-plugin-browserslist": "0",
+    "eslint": "8",
+    "eslint-config-prettier": "8",
+    "eslint-import-resolver-typescript": "3",
+    "eslint-plugin-compat": "4",
+    "eslint-plugin-import": "2",
+    "eslint-plugin-react": "7",
+    "eslint-plugin-react-hooks": "4",
+    "husky": "8",
+    "lint-staged": "13",
+    "prettier": "3",
+    "react": "18",
+    "rimraf": "5",
+    "ts-node": "10",
+    "typescript": "5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "./dist/"
+  ],
+  "homepage": "https://github.com/apancutt/react-mixpanel-browser#readme",
   "keywords": [
     "react",
     "mixpanel"
   ],
-  "homepage": "https://github.com/apancutt/react-mixpanel-browser#readme",
-  "bugs": {
-    "url": "https://github.com/apancutt/react-mixpanel-browser/issues"
-  },
-  "author": "Adam Pancutt <adam@pancutt.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apancutt/react-mixpanel-browser.git"
+  "lint-staged": {
+    "**/*.(md|json)": "yarn run format",
+    "**/*.(cjs|mjs|js|jsx|ts|tsx)": [
+      "yarn run format",
+      "yarn run lint"
+    ]
   },
-  "main": "dist/cjs.js",
-  "module": "dist/es.js",
-  "dependencies": {
-    "@babel/runtime": "7",
-    "mixpanel-browser": "2"
+  "main": "./dist/index.cjs",
+  "name": "react-mixpanel-browser",
+  "packageManager": "yarn@3.6.1",
+  "peerDependencies": {
+    "react": "18"
   },
-  "devDependencies": {
-    "@babel/core": "7",
-    "@babel/plugin-transform-runtime": "7",
-    "@babel/preset-react": "7",
-    "@rollup/plugin-babel": "5",
-    "@rollup/plugin-commonjs": "22",
-    "@rollup/plugin-node-resolve": "13",
-    "react": "18",
-    "react-scripts": "5",
-    "rollup": "2"
-  },
+  "repository": "apancutt/react-mixpanel-browser",
   "scripts": {
-    "eslint": "eslint src/**/*.js",
-    "build": "rollup -c",
-    "build:watch": "rollup -w -c"
+    "build": "rimraf ./dist && yarn exec ./bin/build.ts",
+    "eslint": "eslint --ext '.cjs,.mjs,.js,.jsx,.ts,.tsx'",
+    "lint": "yarn run eslint --fix",
+    "lint:all": "yarn run lint .",
+    "format": "yarn run prettier --write",
+    "format:all": "yarn run format .",
+    "postinstall": "husky install",
+    "prepack": "yarn run build",
+    "prettier": "prettier --ignore-path ./.eslintignore",
+    "publish:major": "yarn version major && yarn npm publish",
+    "publish:minor": "yarn version minor && yarn npm publish",
+    "publish:patch": "yarn version patch && yarn npm publish"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  }
+  "type": "module",
+  "version": "3.3.0"
 }

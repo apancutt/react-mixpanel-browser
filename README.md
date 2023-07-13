@@ -2,85 +2,73 @@
 
 Wrapper of [mixpanel-browser](https://www.npmjs.com/package/mixpanel-browser) for use in React apps.
 
-Provides a `MixpanelLib` instance via the context API.
+Provides a `Mixpanel` instance via the context API.
 
 ## Installation
 
-Install the package using NPM or Yarn:
+### NPM
 
-        npm install --save react-mixpanel-browser
-        # or
-        # yarn add react-mixpanel-browser
+```sh
+npm install --save react-mixpanel-browser
+```
 
-Add your Mixpanel token to `./.env`:
+### Yarn
 
-        REACT_APP_MIXPANEL_TOKEN=<token>
+```sh
+yarn add react-mixpanel-browser
+```
 
 ## Usage
 
-### `MixpanelProvider` Component
+### `MixpanelProvider`
 
-    import React from 'react';
-    import { MixpanelProvider } from 'react-mixpanel-browser';
+Wrap your application with the `<MixpanelProvider />` component:
 
-    const App = (props) => (
-      <MixpanelProvider>
-        ...
-      </MixpanelProvider>
-    );
+```ts
+import { MixpanelProvider } from 'react-mixpanel-browser';
 
-    export default App;
+// [OPTIONAL] Set your Mixpanel token. It is up to you how this token is obtained (e.g. via env
+// var). If `token` is `undefined` or otherwise falsey then `useMixpanel()` will return
+// `undefined` which can be useful for environments where Mixpanel integration is not desired.
+const MIXPANEL_TOKEN = 'MyToken';
 
-### `useMixpanel` Hook
+// [OPTIONAL] Custom options to pass to `mixpanel.init()`.
+const MIXPANEL_CONFIG = {
+  // track_pageview: true, // Set to `false` by default
+};
 
-    import React from 'react';
-    import { useMixpanel } from 'react-mixpanel-browser';
+const App = (props) => (
+  <MixpanelProvider config={MIXPANEL_CONFIG} token={MIXPANEL_TOKEN}>
+    {/* ... */}
+  </MixpanelProvider>
+);
 
-    const Dashboard = (props) => {
+export default App;
+```
 
-      const mixpanel = useMixpanel();
+### `useMixpanel()`
 
-      if (mixpanel.config.token) { // Check that a token was provided (useful if you have environments without Mixpanel)
-        mixpanel.track('My Event', {
-          my_custom_prop: 'foo',
-        });
-      }
+Call the `useMixpanel()` hook when you need to interact with Mixpanel:
 
-      return (
-        <>
-          ...
-        </>
-      );
+```ts
+import { useMixpanel } from 'react-mixpanel-browser';
 
-    };
+const Dashboard = (props) => {
+  const mixpanel = useMixpanel();
 
-    export default Dashboard;
-
-### `withMixpanel` High-Order Component
-
-    import React, { Component } from 'react';
-    import { withMixpanel } from 'react-mixpanel-browser';
-
-    class Dashboard extends Component {
-
-      render() {
-
-        const { mixpanel } = this.props;
-
-        if (mixpanel.config.token) { // Check that a token was provided (useful if you have environments without Mixpanel)
-          mixpanel.track('My Event', {
-            my_custom_prop: 'foo',
-          });
-        }
-
-        return (
-          <>
-            ...
-          </>
-        );
-
-      }
-
+  useEffect(() => {
+    if (!mixpanel) {
+      // Will be `undefined` if a token was not provided to `MixpanelProvider`
+      return;
     }
 
-    export default withMixpanel(Dashboard);
+    mixpanel.track('DashboadView', {
+      my_custom_prop: 'foo',
+    });
+  }, [mixpanel]);
+
+  return <div>Dashboard</div>;
+};
+
+export default Dashboard;
+```
