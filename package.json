@@ -80,5 +80,5 @@
     "publish:patch": "yarn version patch && yarn npm publish"
   },
   "type": "module",
-  "version": "3.3.0"
+  "version": "4.0.0"
 }
