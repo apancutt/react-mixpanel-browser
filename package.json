@@ -73,11 +73,12 @@
     "format": "yarn run prettier --write",
     "format:all": "yarn run format .",
     "postinstall": "husky install",
+    "postrelease": "TAG=$(yarn exec 'echo $npm_package_version') git commit -am \"${TAG}\" && git tag -a \"${TAG}\" -m \"${TAG}\" && git push --follow-tags && yarn npm publish",
     "prepack": "yarn run build",
     "prettier": "prettier --ignore-path ./.eslintignore",
-    "publish:major": "yarn version major && yarn npm publish",
-    "publish:minor": "yarn version minor && yarn npm publish",
-    "publish:patch": "yarn version patch && yarn npm publish"
+    "release:major": "yarn version major && yarn run postrelease",
+    "release:minor": "yarn version minor && yarn run postrelease",
+    "release:patch": "yarn version patch && yarn run postrelease"
   },
   "type": "module",
   "version": "4.0.0"
