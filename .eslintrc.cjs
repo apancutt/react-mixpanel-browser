@@ -66,7 +66,14 @@ module.exports = {
             },
           },
         ],
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            ignoreRestSiblings: true,
+          },
+        ],
         'dot-notation': 'off',
+        'no-unused-vars': 'off',
       },
       settings: {
         'import/resolver': {
@@ -125,6 +132,12 @@ module.exports = {
     ],
     'import/no-default-export': 'error',
     'import/no-duplicates': ['error', { 'prefer-inline': true }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['!**/src/**'],
+      },
+    ],
     'import/no-unresolved': 'off',
     'import/order': [
       'error',
@@ -138,6 +151,12 @@ module.exports = {
     'no-constructor-return': 'error',
     'no-duplicate-imports': ['error', { includeExports: true }],
     'no-unused-expressions': 'error',
+    'no-unused-vars': [
+      'error',
+      {
+        ignoreRestSiblings: true,
+      },
+    ],
     'sort-imports': [
       'error',
       {
