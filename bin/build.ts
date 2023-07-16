@@ -38,7 +38,6 @@ import typescript from 'typescript';
       }),
 
       new Promise((resolve, reject) => {
-        /* eslint-disable import/no-named-as-default-member */
         const res = typescript
           .createProgram(entryPoints, {
             declaration: true,

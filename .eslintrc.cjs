@@ -1,7 +1,7 @@
 /** @type {import('eslint').ESLint.ConfigData} */
 module.exports = {
   env: {
-    es2023: true,
+    es2024: true,
     node: true,
   },
   extends: [
@@ -98,6 +98,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   plugins: ['prettier', 'sort-keys-shorthand'],
+  reportUnusedDisableDirectives: true,
   root: true,
   rules: {
     'compat/compat': 'off',
