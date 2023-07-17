@@ -55,8 +55,8 @@
   ],
   "license": "MIT",
   "lint-staged": {
-    "**/*.(css|html?|md|json)": "prettier --ignore-path \"$PROJECT_CWD/.eslintignore\" --write",
-    "**/*.(cjs|mjs|js|jsx|ts|tsx)": "eslint --fix"
+    "**/*.(css|html?|md|json)": "prettier --ignore-path \"$PROJECT_CWD/.eslintignore\" --check",
+    "**/*.(cjs|mjs|js|jsx|ts|tsx)": "eslint"
   },
   "main": "./dist/index.cjs",
   "name": "react-mixpanel-browser",
