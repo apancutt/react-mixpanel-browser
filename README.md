@@ -4,6 +4,8 @@ Wrapper of [mixpanel-browser](https://www.npmjs.com/package/mixpanel-browser) fo
 
 Provides a `Mixpanel` instance via the context API.
 
+If you would like to contribute, please run e.g. `npm husky install` after cloning the repo to install hooks.
+
 ## Installation
 
 ### NPM
