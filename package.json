@@ -32,6 +32,7 @@
     "eslint-plugin-typescript-sort-keys": "2",
     "husky": "8",
     "lint-staged": "13",
+    "pinst": "3",
     "prettier": "3",
     "react": "18",
     "rimraf": "5",
@@ -69,8 +70,9 @@
     "build": "rimraf ./dist && yarn exec ./bin/build.ts",
     "lint": "eslint --ext \".cjs,.mjs,.js,.jsx,.ts,.tsx\" --fix .",
     "postinstall": "husky install",
+    "postpack": "pinst --enable",
     "postrelease": "TAG=$(yarn exec 'echo $npm_package_version') git commit -am \"${TAG}\" && git tag -a \"${TAG}\" -m \"${TAG}\" && git push --follow-tags && yarn npm publish",
-    "prepack": "yarn run build",
+    "prepack": "yarn run build && pinst --disable",
     "release:major": "yarn version major && yarn run postrelease",
     "release:minor": "yarn version minor && yarn run postrelease",
     "release:patch": "yarn version patch && yarn run postrelease"
