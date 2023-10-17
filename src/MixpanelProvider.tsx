@@ -1,6 +1,9 @@
-import { type Config, init } from 'mixpanel-browser';
+import * as MixpanelBrowser from 'mixpanel-browser';
 import { type ProviderProps, useMemo } from 'react';
 import { type MixpanelContext, mixpanelContext } from './mixpanelContext.js';
+
+type Config = MixpanelBrowser.Config;
+const { init } = MixpanelBrowser;
 
 export interface MixpanelProviderProps extends Omit<ProviderProps<MixpanelContext>, 'value'> {
   config?: Partial<Config>;
