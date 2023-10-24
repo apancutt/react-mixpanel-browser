@@ -78,5 +78,6 @@
     "release:patch": "yarn version patch && yarn run postrelease"
   },
   "type": "module",
+  "types": "./dist/index.d.ts",
   "version": "4.0.1"
 }
