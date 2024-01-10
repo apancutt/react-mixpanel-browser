@@ -62,7 +62,7 @@ const Dashboard = (props) => {
       return;
     }
 
-    mixpanel.track('DashboadView', {
+    mixpanel.track('DashboardView', {
       my_custom_prop: 'foo',
     });
   }, [mixpanel]);
